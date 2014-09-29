@@ -100,10 +100,15 @@ struct Pad
     return midiNote;
   }
   
-  void configure(int threshold, int relax)
+  void configure(int threshold, int relax, bool up, bool down)
   {
     _threshold = threshold;
     _relax = relax;
+    if(up) {
+      ++_note;
+    } else if(down) {
+      --_note;
+    }
   }
 
   void light(bool value)

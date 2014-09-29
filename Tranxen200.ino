@@ -5,8 +5,6 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial2, MidiOut);
 #include "SurfaceConfiguration.h"
 #include "MidiSetting.h"
 
-#include "Utils.h"
-
 namespace THCRecords
 {
 namespace Interface
@@ -31,100 +29,132 @@ typedef MidiSetting<42,44,46> TheMidiSetting;
 namespace Logic
 {
 
-typedef Utils::Cons<Pad<Interface::Pad9>,
-             Utils::Cons<Pad<Interface::Pad8>,
-                  Utils::Cons<Pad<Interface::Pad7>,
-                       Utils::Cons<Pad<Interface::Pad6>,
-                            Utils::Cons<Pad<Interface::Pad5>,
-                                 Utils::Cons<Pad<Interface::Pad4>,
-                                      Utils::Cons<Pad<Interface::Pad3>,
-                                           Utils::Cons<Pad<Interface::Pad2>,
-                                                Utils::Cons<Pad<Interface::Pad1>,
-                                                     Utils::Cons<Pad<Interface::Pad0> >
-                                                >
-                                           >
-                                      >
-                                 >
-                            >
-                       >
-                  >
-             >
-        > PadList;
-
-template<typename Pads>
-struct TouchPadDevice : TouchPadDevice<typename Pads::tail>
+struct TouchPadDevice
 {
-  typename Pads::head _pad;
+  Logic::Pad<Interface::Pad0> _pad0;
+  Logic::Pad<Interface::Pad1> _pad1;
+  Logic::Pad<Interface::Pad2> _pad2;
+  Logic::Pad<Interface::Pad3> _pad3;
+  Logic::Pad<Interface::Pad4> _pad4;
+  Logic::Pad<Interface::Pad5> _pad5;
+  Logic::Pad<Interface::Pad6> _pad6;
+  Logic::Pad<Interface::Pad7> _pad7;
+  Logic::Pad<Interface::Pad8> _pad8;
+  Logic::Pad<Interface::Pad9> _pad9;
 
   void setup()
   {
-    _pad.setup();
-    TouchPadDevice<typename Pads::tail>::setup();
+    _pad0.setup();
+    _pad1.setup();
+    _pad2.setup();
+    _pad3.setup();
+    _pad4.setup();
+    _pad5.setup();
+    _pad6.setup();
+    _pad7.setup();
+    _pad8.setup();
+    _pad9.setup();
   }
 
   int play(int channel)
   {
-    int index = TouchPadDevice<typename Pads::tail>::play(channel);
-    if(_pad.play(channel))
-    {
-      index = Utils::length<typename Pads::tail>::size;
-    }
+    int index = -1;
+    index = _pad0.play(channel) ? 0 : index;
+    index = _pad1.play(channel) ? 1 : index;
+    index = _pad2.play(channel) ? 2 : index;
+    index = _pad3.play(channel) ? 3 : index;
+    index = _pad4.play(channel) ? 4 : index;
+    index = _pad5.play(channel) ? 5 : index;
+    index = _pad6.play(channel) ? 6 : index;
+    index = _pad7.play(channel) ? 7 : index;
+    index = _pad8.play(channel) ? 8 : index;
+    index = _pad9.play(channel) ? 9 : index;
     return index;
   }
 
   void light(int index)
   {
-    if (index == Utils::length<typename Pads::tail>::size)
-    {
-      _pad.light(true);
-    }
-    else
-    {
-      TouchPadDevice<typename Pads::tail>::light(index);
-    }
-  }
-
-  void configure(int index, int threshold, int relax, const MidiSetting<Interface::TheMidiSetting>& midiSetting)
-  {
-    if (index == Utils::length<typename Pads::tail>::size)
-    {
-      _pad.configure(threshold,relax);
-      if (midiSetting._up)
+    switch (index)
       {
-	++(_pad._note);
+      case 0:
+	_pad0.light(true);
+	break;
+      case 1:
+	_pad1.light(true);
+	break;
+      case 2:
+	_pad2.light(true);
+	break;
+      case 3:
+	_pad3.light(true);
+	break;
+      case 4:
+	_pad4.light(true);
+	break;
+      case 5:
+	_pad5.light(true);
+	break;
+      case 6:
+	_pad6.light(true);
+	break;
+      case 7:
+	_pad7.light(true);
+	break;
+      case 8:
+	_pad8.light(true);
+	break;
+      case 9:
+	_pad9.light(true);
+	break;
+      default:
+	break;
       }
-      else if (midiSetting._down)
-      {
-	--(_pad._note);
-      }
-    }
-    else
-    {
-      TouchPadDevice<typename Pads::tail>::configure(index, threshold, relax, midiSetting);
-    }
   }
-};
-
-template<>
-struct TouchPadDevice<Utils::Nil>
-{
-  void setup()
-  {}
-  int play(int)
+  void configure(int index, int threshold, int relax, bool up, bool down)
   {
-    return -1;
+    switch (index)
+      {
+      case 0:
+	_pad0.configure(threshold, relax, up, down);
+	break;
+      case 1:
+	_pad1.configure(threshold, relax, up, down);
+	break;
+      case 2:
+	_pad2.configure(threshold, relax, up, down);
+	break;
+      case 3:
+	_pad3.configure(threshold, relax, up, down);
+	break;
+      case 4:
+	_pad4.configure(threshold, relax, up, down);
+	break;
+      case 5:
+	_pad5.configure(threshold, relax, up, down);
+	break;
+      case 6:
+	_pad6.configure(threshold, relax, up, down);
+	break;
+      case 7:
+	_pad7.configure(threshold, relax, up, down);
+	break;
+      case 8:
+	_pad8.configure(threshold, relax, up, down);
+	break;
+      case 9:
+	_pad9.configure(threshold, relax, up, down);
+	break;
+      default:
+	break;
+      }
   }
-  void light(int)
-  {}
-  void configure(int, int, int, const MidiSetting<Interface::TheMidiSetting>&)
-  {}
 };
 
 }
 
 struct TouchPad
 {
-  Logic::TouchPadDevice<Logic::PadList> _touchDevice;
+  Logic::TouchPadDevice _touchDevice;
   Interface::TheSurfaceConfiguration _device;
   int _lastHitPad;
 
@@ -144,7 +174,8 @@ struct TouchPad
     _touchDevice.configure(_lastHitPad,
 			   _device.readThreshold(),
 			   _device.readRelax(),
-			   midiSetting);
+			   midiSetting._up,
+			   midiSetting._down);
     this->play(midiSetting);
   }
 
