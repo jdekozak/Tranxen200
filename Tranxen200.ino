@@ -152,69 +152,40 @@ struct TouchPadDevice
 
 }
 
-struct TouchPad
-{
-  Logic::TouchPadDevice _touchDevice;
-  Interface::TheSurfaceConfiguration _device;
-  int _lastHitPad;
-
-  void setup()
-  {
-    _lastHitPad = -1;
-
-    _device.setup();
-
-    _touchDevice.setup();
-  }
-
-  void configure(Logic::MidiSetting<Interface::TheMidiSetting>& midiSetting)
-  {
-    
-    _touchDevice.light(_lastHitPad);
-    _touchDevice.configure(_lastHitPad,
-			   _device.readThreshold(),
-			   _device.readRelax(),
-			   midiSetting._up,
-			   midiSetting._down);
-    this->play(midiSetting);
-  }
-
-  void play(Logic::MidiSetting<Interface::TheMidiSetting>& midiSetting)
-  {
-    _lastHitPad = _touchDevice.play(midiSetting._channel);
-  }
-
-};
-
 struct Tranxen200
 {
   static const int CONFIG = HIGH;
   static const int PLAY   = LOW;
 
+  Logic::TouchPadDevice _touchDevice;
+  Interface::TheSurfaceConfiguration _surfaceDevice;
   Logic::MidiSetting<Interface::TheMidiSetting> _midiSetting;
-  TouchPad _touchPad;
 
+  int _lastHitPad;
   int _mode;
 
   void setup()
   {
+    _lastHitPad = -1;
     _mode = PLAY;
+
     _midiSetting.setup();
-    _touchPad.setup();
+    _surfaceDevice.setup();
+    _touchDevice.setup();
   }
 
   void loop()
   {
-    _mode = _touchPad._device.getMode();
+    _mode = _surfaceDevice.getMode();
     if (_mode == CONFIG)
     {
       _midiSetting.readValues();
-      _touchPad.configure(_midiSetting);
+      _touchDevice.light(_lastHitPad);
+      _touchDevice.configure(_lastHitPad,
+			     _surfaceDevice.readThreshold(), _surfaceDevice.readRelax(),
+			     _midiSetting._up, _midiSetting._down);
     }
-    else
-    {
-      _touchPad.play(_midiSetting);
-    }
+    _lastHitPad = _touchDevice.play(_midiSetting._channel);
   }
 };
 
