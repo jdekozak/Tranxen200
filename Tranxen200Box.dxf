@@ -1535,15 +1535,15 @@ coupe
   6
 ByLayer
  10
-0.0
+261.0
  20
-200.0
+320.0
  30
 0.0
  11
-564.0
+302.0
  21
-200.0
+320.0
  31
 0.0
   0
@@ -1563,15 +1563,15 @@ coupe
   6
 ByLayer
  10
-564.0
+302.0
  20
-200.0
+320.0
  30
 0.0
  11
-564.0
+302.0
  21
-230.0
+330.0
  31
 0.0
   0
@@ -1591,245 +1591,21 @@ coupe
   6
 ByLayer
  10
-564.0
+302.0
  20
-230.0
+330.0
  30
 0.0
  11
-0.0
+261.0
  21
-230.0
+330.0
  31
 0.0
   0
 LINE
   5
 50
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.0
- 20
-230.0
- 30
-0.0
- 11
-0.0
- 21
-200.0
- 31
-0.0
-  0
-LINE
-  5
-51
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.0
- 20
-300.0
- 30
-0.0
- 11
-564.0
- 21
-300.0
- 31
-0.0
-  0
-LINE
-  5
-52
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-564.0
- 20
-300.0
- 30
-0.0
- 11
-564.0
- 21
-350.0
- 31
-0.0
-  0
-LINE
-  5
-53
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-564.0
- 20
-350.0
- 30
-0.0
- 11
-0.0
- 21
-350.0
- 31
-0.0
-  0
-LINE
-  5
-54
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-0.0
- 20
-350.0
- 30
-0.0
- 11
-0.0
- 21
-300.0
- 31
-0.0
-  0
-LINE
-  5
-55
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-261.0
- 20
-320.0
- 30
-0.0
- 11
-302.0
- 21
-320.0
- 31
-0.0
-  0
-LINE
-  5
-56
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-302.0
- 20
-320.0
- 30
-0.0
- 11
-302.0
- 21
-330.0
- 31
-0.0
-  0
-LINE
-  5
-57
-100
-AcDbEntity
-100
-AcDbLine
-  8
-coupe
- 62
-256
-370
--1
-  6
-ByLayer
- 10
-302.0
- 20
-330.0
- 30
-0.0
- 11
-261.0
- 21
-330.0
- 31
-0.0
-  0
-LINE
-  5
-58
 100
 AcDbEntity
 100
@@ -1857,7 +1633,7 @@ ByLayer
   0
 CIRCLE
   5
-59
+51
 100
 AcDbEntity
 100
@@ -1881,7 +1657,7 @@ ByLayer
   0
 CIRCLE
   5
-5A
+52
 100
 AcDbEntity
 100
@@ -1905,7 +1681,7 @@ ByLayer
   0
 DIMENSION
   5
-5B
+53
 100
 AcDbEntity
   8
@@ -1935,7 +1711,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -1965,127 +1741,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-5C
-100
-AcDbEntity
-  8
-mesure
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbDimension
- 10
-564.0
- 20
-500.0
- 30
-0.0
- 11
-282.0
- 21
-501.875
- 31
-0.0
- 70
-0
- 71
-5
- 72
-1
- 41
-1.0
- 42
-0.0
-  1
-
-  3
-Standard
-100
-AcDbAlignedDimension
- 13
-0.0
- 23
-230.0
- 33
-0.0
- 14
-564.0
- 24
-230.0
- 34
-0.0
- 50
-0.0
-100
-AcDbRotatedDimension
-  0
-DIMENSION
-  5
-5D
-100
-AcDbEntity
-  8
-mesure
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbDimension
- 10
-200.0
- 20
-400.0
- 30
-0.0
- 11
-100.0
- 21
-401.875
- 31
-0.0
- 70
-0
- 71
-5
- 72
-1
- 41
-1.0
- 42
-0.0
-  1
-
-  3
-Standard
-100
-AcDbAlignedDimension
- 13
-0.0
- 23
-350.0
- 33
-0.0
- 14
-200.0
- 24
-325.0
- 34
-0.0
- 50
-0.0
-100
-AcDbRotatedDimension
-  0
-DIMENSION
-  5
-5E
+54
 100
 AcDbEntity
   8
@@ -2115,7 +1771,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2145,7 +1801,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-5F
+55
 100
 AcDbEntity
   8
@@ -2175,7 +1831,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2205,7 +1861,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-60
+56
 100
 AcDbEntity
   8
@@ -2235,7 +1891,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2265,7 +1921,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-61
+57
 100
 AcDbEntity
   8
@@ -2295,7 +1951,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2325,7 +1981,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-62
+58
 100
 AcDbEntity
   8
@@ -2355,7 +2011,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2385,67 +2041,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-63
-100
-AcDbEntity
-  8
-mesure
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbDimension
- 10
-600.0
- 20
-230.0
- 30
-0.0
- 11
-598.125
- 21
-215.0
- 31
-0.0
- 70
-0
- 71
-5
- 72
-1
- 41
-1.0
- 42
-0.0
-  1
-
-  3
-Standard
-100
-AcDbAlignedDimension
- 13
-564.0
- 23
-200.0
- 33
-0.0
- 14
-564.0
- 24
-230.0
- 34
-0.0
- 50
-90.0
-100
-AcDbRotatedDimension
-  0
-DIMENSION
-  5
-64
+59
 100
 AcDbEntity
   8
@@ -2475,7 +2071,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2505,7 +2101,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-65
+5A
 100
 AcDbEntity
   8
@@ -2535,7 +2131,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2561,7 +2157,7 @@ AcDbAlignedDimension
   0
 DIMENSION
   5
-66
+5B
 100
 AcDbEntity
   8
@@ -2591,7 +2187,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2617,7 +2213,7 @@ AcDbAlignedDimension
   0
 DIMENSION
   5
-67
+5C
 100
 AcDbEntity
   8
@@ -2647,7 +2243,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2677,7 +2273,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-68
+5D
 100
 AcDbEntity
   8
@@ -2707,7 +2303,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2737,67 +2333,7 @@ AcDbRotatedDimension
   0
 DIMENSION
   5
-69
-100
-AcDbEntity
-  8
-mesure
- 62
-256
-370
--1
-  6
-ByLayer
-100
-AcDbDimension
- 10
--100.0
- 20
-325.0
- 30
-0.0
- 11
--101.875
- 21
-337.5
- 31
-0.0
- 70
-0
- 71
-5
- 72
-1
- 41
-1.0
- 42
-0.0
-  1
-
-  3
-Standard
-100
-AcDbAlignedDimension
- 13
-0.0
- 23
-350.0
- 33
-0.0
- 14
-200.0
- 24
-325.0
- 34
-0.0
- 50
-90.0
-100
-AcDbRotatedDimension
-  0
-DIMENSION
-  5
-6A
+5E
 100
 AcDbEntity
   8
@@ -2827,7 +2363,7 @@ AcDbDimension
  71
 5
  72
-1
+0
  41
 1.0
  42
@@ -2852,6 +2388,470 @@ AcDbAlignedDimension
 0.0
  50
 0.0
+100
+AcDbRotatedDimension
+  0
+LINE
+  5
+5F
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+1.0
+ 20
+230.0
+ 30
+0.0
+ 11
+1.0
+ 21
+200.0
+ 31
+0.0
+  0
+LINE
+  5
+60
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+563.0
+ 20
+200.0
+ 30
+0.0
+ 11
+563.0
+ 21
+230.0
+ 31
+0.0
+  0
+DIMENSION
+  5
+61
+100
+AcDbEntity
+  8
+mesure
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbDimension
+ 10
+600.0
+ 20
+230.0
+ 30
+0.0
+ 11
+598.125
+ 21
+215.0
+ 31
+0.0
+ 70
+0
+ 71
+5
+ 72
+0
+ 41
+1.0
+ 42
+0.0
+  1
+
+  3
+Standard
+100
+AcDbAlignedDimension
+ 13
+563.0
+ 23
+200.0
+ 33
+0.0
+ 14
+563.0
+ 24
+230.0
+ 34
+0.0
+ 50
+90.0
+100
+AcDbRotatedDimension
+  0
+LINE
+  5
+62
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+1.0
+ 20
+200.0
+ 30
+0.0
+ 11
+563.0
+ 21
+200.0
+ 31
+0.0
+  0
+LINE
+  5
+63
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+563.0
+ 20
+230.0
+ 30
+0.0
+ 11
+1.0
+ 21
+230.0
+ 31
+0.0
+  0
+DIMENSION
+  5
+64
+100
+AcDbEntity
+  8
+mesure
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbDimension
+ 10
+564.0
+ 20
+500.0
+ 30
+0.0
+ 11
+282.0
+ 21
+501.875
+ 31
+0.0
+ 70
+0
+ 71
+5
+ 72
+0
+ 41
+1.0
+ 42
+0.0
+  1
+
+  3
+Standard
+100
+AcDbAlignedDimension
+ 13
+1.0
+ 23
+230.0
+ 33
+0.0
+ 14
+563.0
+ 24
+230.0
+ 34
+0.0
+ 50
+0.0
+100
+AcDbRotatedDimension
+  0
+LINE
+  5
+65
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+1.0
+ 20
+350.0
+ 30
+0.0
+ 11
+1.0
+ 21
+300.0
+ 31
+0.0
+  0
+LINE
+  5
+66
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+563.0
+ 20
+300.0
+ 30
+0.0
+ 11
+563.0
+ 21
+350.0
+ 31
+0.0
+  0
+LINE
+  5
+67
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+1.0
+ 20
+300.0
+ 30
+0.0
+ 11
+563.0
+ 21
+300.0
+ 31
+0.0
+  0
+LINE
+  5
+68
+100
+AcDbEntity
+100
+AcDbLine
+  8
+coupe
+ 62
+256
+370
+-1
+  6
+ByLayer
+ 10
+563.0
+ 20
+350.0
+ 30
+0.0
+ 11
+1.0
+ 21
+350.0
+ 31
+0.0
+  0
+DIMENSION
+  5
+69
+100
+AcDbEntity
+  8
+mesure
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbDimension
+ 10
+200.0
+ 20
+400.0
+ 30
+0.0
+ 11
+100.5
+ 21
+401.875
+ 31
+0.0
+ 70
+0
+ 71
+5
+ 72
+0
+ 41
+1.0
+ 42
+0.0
+  1
+
+  3
+Standard
+100
+AcDbAlignedDimension
+ 13
+1.0
+ 23
+350.0
+ 33
+0.0
+ 14
+200.0
+ 24
+325.0
+ 34
+0.0
+ 50
+0.0
+100
+AcDbRotatedDimension
+  0
+DIMENSION
+  5
+6A
+100
+AcDbEntity
+  8
+mesure
+ 62
+256
+370
+-1
+  6
+ByLayer
+100
+AcDbDimension
+ 10
+-100.0
+ 20
+325.0
+ 30
+0.0
+ 11
+-101.875
+ 21
+337.5
+ 31
+0.0
+ 70
+0
+ 71
+5
+ 72
+0
+ 41
+1.0
+ 42
+0.0
+  1
+
+  3
+Standard
+100
+AcDbAlignedDimension
+ 13
+1.0
+ 23
+350.0
+ 33
+0.0
+ 14
+200.0
+ 24
+325.0
+ 34
+0.0
+ 50
+90.0
 100
 AcDbRotatedDimension
   0
