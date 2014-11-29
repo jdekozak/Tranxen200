@@ -16,7 +16,6 @@ module bottom()
 module side()
 {
   cube([medium_thickness, A2_y, box_height]);
-  //translate([0,A2_y,0]) rotate([90,0,-90]) linear_extrude(height=medium_thickness) polygon([[0,0],[A2_y,0],[A2_y,box_height],[0,box_height]]);
 }
 
 module front()
@@ -57,6 +56,43 @@ module support()
   rotate([90,90,90]) linear_extrude(height=medium_thickness) polygon([[0,0],[0,A2_y],[support_height,A2_y]]);
 }
 
+module foam()
+{
+  cube([123.5,160,box_height]);
+}
+
+module piezo()
+{
+                       cylinder(h=0.5,r=17.5);
+  translate([0,0,0.5]) color("White") cylinder(h=0.5,r=12.5);
+}
+
+module plate()
+{
+  color("Silver") cube([123.5,160,1]);
+  translate([61.25,80,,1]) piezo();
+}
+
+module pad()
+{
+                                      color("Grey") foam();
+  translate([123.5,0,box_height+50]) rotate([0,180,0]) plate();
+}
+
+module touch()
+{
+  translate([20        ,20,3]) color("DimGray") cube([123.5,160,1]);
+  translate([20+143.5  ,20,3]) color("DimGray") cube([123.5,160,1]);
+  translate([20+143.5*2,20,3]) color("DimGray") cube([123.5,160,1]);
+  translate([20+143.5*3,20,3]) color("DimGray") cube([123.5,160,1]);
+
+  translate([20        ,200,3]) color("DimGray") cube([123.5,160,1]);
+  translate([20+143.5  ,200,3]) color("DimGray") cube([123.5,160,1]);
+  translate([20+143.5*2,200,3]) color("DimGray") cube([123.5,160,1]);
+  translate([20+143.5*3,200,3]) color("DimGray") cube([123.5,160,1]);
+
+  color("Black") cube([594,375,3]);
+}
 
 //box
 module Tranxen200Box()
@@ -72,10 +108,20 @@ module Tranxen200Box()
   translate([2+143.5*2,0,small_thickness])             color("GoldenRod") inside();
   translate([2+143.5*3,0,small_thickness])             color("GoldenRod") inside();
 
+  translate([20        ,20,small_thickness+box_height*2]) pad();
+  translate([20+143.5  ,20,small_thickness+box_height*2]) pad();
+  translate([20+143.5*2,20,small_thickness+box_height*2]) pad();
+  translate([20+143.5*3,20,small_thickness+box_height*2]) pad();
+
+  translate([20        ,200,small_thickness+box_height*2]) pad();
+  translate([20+143.5  ,200,small_thickness+box_height*2]) pad();
+  translate([20+143.5*2,200,small_thickness+box_height*2]) pad();
+  translate([20+143.5*3,200,small_thickness+box_height*2]) pad();
+ 
+  translate([0,0,small_thickness+box_height*7]) touch();
+
                                          color("GoldenRod") support();
   translate([A2_x-medium_thickness,0,0]) color("GoldenRod") support();
 }
 
-translate([-(A2_x/2),-(A2_y/2),0]) Tranxen200Box();
-//support();
-
+translate([-(A2_x/2),-(A2_y/2),-100]) Tranxen200Box();
