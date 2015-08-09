@@ -32,7 +32,7 @@ module rear()
   datasub_lower_left_y=(box_height-datasub_height)/2;
   difference()
   {
-                                              cube([rear_x,5,box_height]);
+                                              cube([rear_x,small_thickness,box_height]);
     translate([200.5,0,jack_holes_center_y]) rotate([270,0,0]) cylinder(h=20,r=4.5, center=true);
     translate([230.5,0,jack_holes_center_y]) rotate([270,0,0]) cylinder(h=20,r=4.5, center=true);
     translate([260.5,-5,datasub_lower_left_y])                  cube([41,20,datasub_height]);
@@ -41,13 +41,7 @@ module rear()
 
 module inside()
 {
-  to_cut_y=60;
-  difference()
-  {
-    side();
-    translate([-1,-1,-10])            cube([medium_thickness+2,medium_thickness+1,70]);
-    translate([-1,A2_y-to_cut_y,-10]) cube([medium_thickness+2,to_cut_y+1,70]);
-  }
+	cube([medium_thickness, 160*2+20*2, box_height]);
 }
 
 module support()
@@ -104,9 +98,9 @@ module Tranxen200Box()
   translate([A2_x-medium_thickness,0,small_thickness])                  color("GoldenRod") side();
                                                                         color("Aqua") bottom();
 
-  translate([2+143.5,0,small_thickness])               color("GoldenRod") inside();
-  translate([2+143.5*2,0,small_thickness])             color("GoldenRod") inside();
-  translate([2+143.5*3,0,small_thickness])             color("GoldenRod") inside();
+  translate([2+143.5  ,medium_thickness,small_thickness])             color("GoldenRod") inside();
+  translate([2+143.5*2,medium_thickness,small_thickness])             color("GoldenRod") inside();
+  translate([2+143.5*3,medium_thickness,small_thickness])             color("GoldenRod") inside();
 
   translate([20        ,20,small_thickness+box_height*2]) pad();
   translate([20+143.5  ,20,small_thickness+box_height*2]) pad();
