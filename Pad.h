@@ -1,9 +1,8 @@
-#ifndef __PAD_H__
-#define __PAD_H__
+#pragma once
 
 namespace THCRecords
 {
-namespace Interface
+namespace Device
 {
 
 template<int PIEZO_PIN, int LED_PIN>
@@ -30,8 +29,15 @@ struct Pad
 namespace Logic
 {
 
+struct PadInterface {
+  virtual void setup() = 0;
+  virtual bool play(int channel) = 0;
+  virtual void configure(int threshold, int relax, bool up, bool down) = 0;
+  virtual void light(bool value) = 0;
+};
+
 template<typename PAD_DEVICE>
-struct Pad
+struct Pad : public PadInterface
 {
   static const int PadDefaultThreshold = 600; //Default threshold value between 0 and 1023
   static const int PadDefaultRelax     = 100; //Default relax value in ms value between 0 and 1023
@@ -46,7 +52,7 @@ struct Pad
   int _volume;
   unsigned long _hit;
 
-  void setup()
+  virtual void setup()
   {
     _device.setup();
 
@@ -58,7 +64,7 @@ struct Pad
     _volume = 0;
   }
 
-  bool play(int channel)
+  virtual bool play(int channel)
   {
     bool midiNote   = false;
     bool lightState = false;
@@ -100,7 +106,7 @@ struct Pad
     return midiNote;
   }
   
-  void configure(int threshold, int relax, bool up, bool down)
+  virtual void configure(int threshold, int relax, bool up, bool down)
   {
     _threshold = threshold;
     _relax = relax;
@@ -111,7 +117,7 @@ struct Pad
     }
   }
 
-  void light(bool value)
+  virtual void light(bool value)
   {
     _device.light(value);
   }
@@ -120,5 +126,3 @@ struct Pad
 }
 
 }
-
-#endif

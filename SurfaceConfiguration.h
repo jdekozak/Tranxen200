@@ -1,9 +1,8 @@
-#ifndef __SURFACE_CONFIGURATION_H__
-#define __SURFACE_CONFIGURATION_H__
+#pragma once
 
 namespace THCRecords
 {
-namespace Interface
+namespace Device
 {
 
 template<int THRESHOLD_PIN, int RELAX_PIN, int MODE_PIN>
@@ -30,5 +29,3 @@ struct SurfaceConfiguration
 
 }
 }
-
-#endif

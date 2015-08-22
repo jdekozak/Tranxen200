@@ -1,9 +1,8 @@
-#ifndef __MIDI_SETTING_H__
-#define __MIDI_SETTING_H__
+#pragma once
 
 namespace THCRecords
 {
-namespace Interface
+namespace Device
 {
 
 template<int NEXT_PIN, int UP_PIN, int DOWN_PIN>
@@ -101,5 +100,3 @@ struct MidiSetting
 }
 
 }
-
-#endif

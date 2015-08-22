@@ -7,7 +7,7 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial2, MidiOut);
 
 namespace THCRecords
 {
-namespace Interface
+namespace Device
 {
 
 //Compile-time wiring
@@ -29,124 +29,79 @@ typedef MidiSetting<42,44,46> TheMidiSetting;
 namespace Logic
 {
 
+struct PadFactory
+{
+  Logic::PadInterface* create(int pad) const
+  {
+    Logic::PadInterface* thePad = 0;
+    switch(pad) {
+      case 0:
+        new Logic::Pad<Device::Pad0>();
+        break;
+      case 1:
+        new Logic::Pad<Device::Pad1>();
+        break;
+      case 2:
+        new Logic::Pad<Device::Pad2>();
+        break;
+      case 3:
+        new Logic::Pad<Device::Pad3>();
+        break;
+      case 4:
+        new Logic::Pad<Device::Pad4>();
+        break;
+      case 5:
+        new Logic::Pad<Device::Pad5>();
+        break;
+      case 6:
+        new Logic::Pad<Device::Pad6>();
+        break;
+      case 7:
+        new Logic::Pad<Device::Pad7>();
+        break;
+      case 8:
+        new Logic::Pad<Device::Pad8>();
+        break;
+      case 9:
+        new Logic::Pad<Device::Pad9>();
+        break;  
+      default:
+        break;
+    }
+    return thePad;
+  }
+};
+
+template<int PAD_NUMBER>
 struct TouchPadDevice
 {
-  Logic::Pad<Interface::Pad0> _pad0;
-  Logic::Pad<Interface::Pad1> _pad1;
-  Logic::Pad<Interface::Pad2> _pad2;
-  Logic::Pad<Interface::Pad3> _pad3;
-  Logic::Pad<Interface::Pad4> _pad4;
-  Logic::Pad<Interface::Pad5> _pad5;
-  Logic::Pad<Interface::Pad6> _pad6;
-  Logic::Pad<Interface::Pad7> _pad7;
-  Logic::Pad<Interface::Pad8> _pad8;
-  Logic::Pad<Interface::Pad9> _pad9;
+  Logic::PadInterface* _pad[PAD_NUMBER];
 
-  void setup()
+  void setup(const PadFactory& padFactory)
   {
-    _pad0.setup();
-    _pad1.setup();
-    _pad2.setup();
-    _pad3.setup();
-    _pad4.setup();
-    _pad5.setup();
-    _pad6.setup();
-    _pad7.setup();
-    _pad8.setup();
-    _pad9.setup();
+    for(int pad = 0; pad < PAD_NUMBER; ++pad) {
+      _pad[pad] = padFactory.create(pad);
+      _pad[pad]->setup();
+    }
   }
 
   int play(int channel)
   {
-    int index = -1;
-    index = _pad0.play(channel) ? 0 : index;
-    index = _pad1.play(channel) ? 1 : index;
-    index = _pad2.play(channel) ? 2 : index;
-    index = _pad3.play(channel) ? 3 : index;
-    index = _pad4.play(channel) ? 4 : index;
-    index = _pad5.play(channel) ? 5 : index;
-    index = _pad6.play(channel) ? 6 : index;
-    index = _pad7.play(channel) ? 7 : index;
-    index = _pad8.play(channel) ? 8 : index;
-    index = _pad9.play(channel) ? 9 : index;
-    return index;
+    int pad = -1;
+    for(int index = 0; index < PAD_NUMBER; ++index) {
+      pad = _pad[index]->play(channel) ? index : pad;
+    }
+    return pad;
   }
 
-  void light(int index)
+  void light(int pad)
   {
-    switch (index)
-      {
-      case 0:
-	_pad0.light(true);
-	break;
-      case 1:
-	_pad1.light(true);
-	break;
-      case 2:
-	_pad2.light(true);
-	break;
-      case 3:
-	_pad3.light(true);
-	break;
-      case 4:
-	_pad4.light(true);
-	break;
-      case 5:
-	_pad5.light(true);
-	break;
-      case 6:
-	_pad6.light(true);
-	break;
-      case 7:
-	_pad7.light(true);
-	break;
-      case 8:
-	_pad8.light(true);
-	break;
-      case 9:
-	_pad9.light(true);
-	break;
-      default:
-	break;
-      }
+    _pad[pad]->light(true);
   }
-  void configure(int index, int threshold, int relax, bool up, bool down)
+
+  void configure(int pad, int threshold, int relax, bool up, bool down)
   {
-    switch (index)
-      {
-      case 0:
-	_pad0.configure(threshold, relax, up, down);
-	break;
-      case 1:
-	_pad1.configure(threshold, relax, up, down);
-	break;
-      case 2:
-	_pad2.configure(threshold, relax, up, down);
-	break;
-      case 3:
-	_pad3.configure(threshold, relax, up, down);
-	break;
-      case 4:
-	_pad4.configure(threshold, relax, up, down);
-	break;
-      case 5:
-	_pad5.configure(threshold, relax, up, down);
-	break;
-      case 6:
-	_pad6.configure(threshold, relax, up, down);
-	break;
-      case 7:
-	_pad7.configure(threshold, relax, up, down);
-	break;
-      case 8:
-	_pad8.configure(threshold, relax, up, down);
-	break;
-      case 9:
-	_pad9.configure(threshold, relax, up, down);
-	break;
-      default:
-	break;
-      }
+    _pad[pad]->configure(threshold, relax, up, down);
   }
 };
 
@@ -157,9 +112,9 @@ struct Tranxen200
   static const int CONFIG = HIGH;
   static const int PLAY   = LOW;
 
-  Logic::TouchPadDevice _touchDevice;
-  Interface::TheSurfaceConfiguration _surfaceDevice;
-  Logic::MidiSetting<Interface::TheMidiSetting> _midiSetting;
+  Logic::TouchPadDevice<10> _touchDevice;
+  Device::TheSurfaceConfiguration _surfaceDevice;
+  Logic::MidiSetting<Device::TheMidiSetting> _midiSetting;
 
   int _lastHitPad;
   int _mode;
@@ -171,7 +126,7 @@ struct Tranxen200
 
     _midiSetting.setup();
     _surfaceDevice.setup();
-    _touchDevice.setup();
+    _touchDevice.setup(Logic::PadFactory());
   }
 
   void loop()
