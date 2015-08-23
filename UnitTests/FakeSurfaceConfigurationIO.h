@@ -16,19 +16,19 @@ struct FakeSurfaceConfigurationIO
   {
       std::cout << "FakeSurfaceConfigurationIO::setup" << std::endl;
   }
-  int readThreshold()
+  int readThreshold() const
   {
     std::cout << "FakeSurfaceConfigurationIO::readThreshold::" << threshold << std::endl;
     return threshold;
   }  
-  int readRelax()
+  int readRelax() const
   {
     std::cout << "FakeSurfaceConfigurationIO::readRelax::" << relax << std::endl;
     return relax;
   }
-  int getMode()
+  int getMode() const
   {
-    std::cout << "FakeSurfaceConfigurationIO::getMode::" << mode << std::endl;
+    std::cout << "FakeSurfaceConfigurationIO::getMode::" << (mode == 1 ? "HIGH" : "LOW") << std::endl;
     return mode;
   }
 };

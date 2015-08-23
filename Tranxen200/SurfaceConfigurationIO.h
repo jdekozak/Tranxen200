@@ -13,15 +13,15 @@ struct SurfaceConfigurationIO
     pinMode(MODE_PIN, INPUT);
   }
 
-  int readThreshold()
+  int readThreshold() const
   {
     return analogRead(THRESHOLD_PIN);
   }  
-  int readRelax()
+  int readRelax() const
   {
     return analogRead(RELAX_PIN);
   }
-  int getMode()
+  int getMode() const
   {
     return digitalRead(MODE_PIN);
   }

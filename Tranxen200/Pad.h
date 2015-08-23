@@ -19,7 +19,7 @@ struct Pad : public PadInterface
   static const int PadDefaultRelax     = 100; //Default relax value in ms value between 0 and 1023
   static const int PadNoteOffset       = 36;  //Hydrogen Instrument 1
 
-  PAD_DEVICE _device;
+  PAD_DEVICE& _device;
   int _threshold;
   int _relax;
 
@@ -27,6 +27,8 @@ struct Pad : public PadInterface
 
   int _volume;
   unsigned long _hit;
+
+  Pad(PAD_DEVICE& device) : _device(device) {}
 
   virtual void setup()
   {
@@ -62,8 +64,6 @@ struct Pad : public PadInterface
       else if (_volume > 0)
       {
         MidiOut.sendNoteOn(_note, (_volume+_threshold)*128/1024, channel);
-        Serial.println(_volume);
-        Serial.println("Note On");
         midiNote = true;
 
         _hit = now;

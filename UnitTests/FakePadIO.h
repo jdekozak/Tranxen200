@@ -4,26 +4,29 @@
 
 namespace THCRecords
 {
-namespace Logic
+namespace Device
 {
+
 struct FakePadIO
 {
   int piezo = 450;
+  bool led = false;
   void setup()
   {
     std::cout << "FakePadIO::setup" << std::endl;
   }
-  int readPiezo()
+  int readPiezo() const
   {
     std::cout << "FakePadIO::readPiezo::" << piezo << std::endl;
     return piezo;
   }
   void light(bool value)
   {
-    std::cout << "FakePadIO::turn::" << (value ? "ON" : "OFF") << std::endl;
+    led = value;
+    std::cout << "FakePadIO::turn::" << (led ? "ON" : "OFF") << std::endl;
   }
 };
 
-
+FakePadIO padDevice;
 }
 }

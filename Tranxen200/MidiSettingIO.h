@@ -14,15 +14,15 @@ struct MidiSettingIO
     pinMode(UP_PIN, INPUT);
     pinMode(DOWN_PIN, INPUT);
   }
-  int getUp()
+  int getUp() const
   {
     return digitalRead(UP_PIN);
   }
-  int getDown()
+  int getDown() const
   {
     return digitalRead(DOWN_PIN);
   }
-  int getNext()
+  int getNext() const
   {
     return digitalRead(NEXT_PIN);
   }

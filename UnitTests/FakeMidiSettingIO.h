@@ -16,17 +16,17 @@ struct FakeMidiSettingIO
   {
     std::cout << "FakeMidiSetting::setup" << std::endl;
   }
-  int getUp()
+  int getUp() const
   {
     std::cout << "FakeMidiSetting::getUp::" << up << std::endl;
     return up;
   }
-  int getDown()
+  int getDown() const
   {
     std::cout << "FakeMidiSetting::getDown::" << down << std::endl;
     return down;
   }
-  int getNext()
+  int getNext() const
   {
     std::cout << "FakeMidiSetting::getNext::" << next << std::endl;
     return next;

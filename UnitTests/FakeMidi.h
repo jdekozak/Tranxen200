@@ -4,9 +4,15 @@
 
 struct FakeMidi
 {
-  void sendNoteOn(int note, int volume, int channel)
+  int note = 0;
+  int volume = 0;
+  int channel = 0;
+  void sendNoteOn(int n, int v, int c)
   {
-    std::cout << note << "," << volume << "," << channel << std::endl;
+    note = n;
+    volume = v;
+    channel = c;
+    std::cout << "FakeMidi::sendNoteOn::" << note << "," << volume << "," << channel << std::endl;
   }
 };
 

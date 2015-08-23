@@ -10,13 +10,15 @@ struct MidiSetting
 {
   static const unsigned long ScanPeriod = 1000; //in ms
 
-  MIDI_DEVICE _device;
+  MIDI_DEVICE& _device;
   int _channel;
 
   unsigned long _lastScan;
   bool _next;
   bool _up;
   bool _down;
+
+  MidiSetting(MIDI_DEVICE& device) : _device(device) {}
 
   void initialize(unsigned long now)
   {

@@ -13,7 +13,7 @@ struct PadIO
     pinMode(LED_PIN, OUTPUT);
   }
 
-  int readPiezo()
+  int readPiezo() const
   {
     return analogRead(PIEZO_PIN);
   }
