@@ -3,7 +3,7 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial2, MidiOut);
 
 #include "PadIO.h"
 #include "MidiSettingIO.h"
-#include "SurfaceConfiguration.h"
+#include "SurfaceConfigurationIO.h"
 #include "MidiSetting.h"
 
 namespace THCRecords 
@@ -12,18 +12,18 @@ namespace Device
 {
 
 //Compile-time wiring
-typedef Pad<0,22> Pad0;
-typedef Pad<1,23> Pad1;
-typedef Pad<2,24> Pad2;
-typedef Pad<3,25> Pad3;
-typedef Pad<4,26> Pad4;
-typedef Pad<5,27> Pad5;
-typedef Pad<6,28> Pad6;
-typedef Pad<7,29> Pad7;
-typedef Pad<8,30> Pad8;
-typedef Pad<9,31> Pad9;
-typedef SurfaceConfiguration<14,15,40> TheSurfaceConfiguration;
-typedef MidiSetting<42,44,46> TheMidiSetting;
+typedef PadIO<0,22> Pad0;
+typedef PadIO<1,23> Pad1;
+typedef PadIO<2,24> Pad2;
+typedef PadIO<3,25> Pad3;
+typedef PadIO<4,26> Pad4;
+typedef PadIO<5,27> Pad5;
+typedef PadIO<6,28> Pad6;
+typedef PadIO<7,29> Pad7;
+typedef PadIO<8,30> Pad8;
+typedef PadIO<9,31> Pad9;
+typedef SurfaceConfigurationIO<14,15,40> TheSurfaceConfiguration;
+typedef MidiSettingIO<42,44,46> TheMidiSetting;
 
 }
 }
@@ -97,4 +97,5 @@ void loop()
 {
   gTranxen200.loop();
 }
+
 

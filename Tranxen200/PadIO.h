@@ -6,7 +6,7 @@ namespace Device
 {
 
 template<int PIEZO_PIN, int LED_PIN>
-struct Pad
+struct PadIO
 {
   void setup()
   {
@@ -26,3 +26,4 @@ struct Pad
 
 }
 }
+

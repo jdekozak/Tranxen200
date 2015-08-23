@@ -1,23 +1,29 @@
 #pragma once
 
+#include <iostream>
+
 namespace THCRecords
 {
 namespace Logic
 {
-  struct FakePadIO
+struct FakePadIO
+{
+  int piezo = 450;
+  void setup()
   {
-      void setup()
-      {
-	  std::cout << "setup" << std::endl;
-      }
-      int readPiezo()
-      {
-	  return 450;
-      }
-      void light(bool value)
-      {
-	  std::cout << "turn " << (value ? "ON" : "OFF") << std::endl;
-      }
-  };
+    std::cout << "FakePadIO::setup" << std::endl;
+  }
+  int readPiezo()
+  {
+    std::cout << "FakePadIO::readPiezo::" << piezo << std::endl;
+    return piezo;
+  }
+  void light(bool value)
+  {
+    std::cout << "FakePadIO::turn::" << (value ? "ON" : "OFF") << std::endl;
+  }
+};
+
+
 }
 }

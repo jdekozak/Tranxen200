@@ -6,7 +6,7 @@ namespace Device
 {
 
 template<int NEXT_PIN, int UP_PIN, int DOWN_PIN>
-struct MidiSetting
+struct MidiSettingIO
 {
   void setup()
   {
@@ -30,3 +30,4 @@ struct MidiSetting
 
 }
 }
+

@@ -6,7 +6,7 @@ namespace Device
 {
 
 template<int THRESHOLD_PIN, int RELAX_PIN, int MODE_PIN>
-struct SurfaceConfiguration
+struct SurfaceConfigurationIO
 {
   void setup()
   {
@@ -29,3 +29,4 @@ struct SurfaceConfiguration
 
 }
 }
+

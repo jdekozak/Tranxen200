@@ -2,16 +2,15 @@
 
 #include <iostream>
 
-class FakeSerial
+struct FakeSerial
 {
-public:
   void println(const char* message)
   {
-      std::cout << message << std::endl;
+    std::cout << "FakeSerial::" << message << std::endl;
   }
   void println(int value)
   {
-      std::cout << value << std::endl;
+    std::cout << "FakeSerial::" << value << std::endl;
   }
 };
 
