@@ -33,5 +33,8 @@ struct FakeMidiSettingIO
   }
 };
 
+typedef FakeMidiSettingIO TheMidiSetting;
+TheMidiSetting midiDevice;
+
 }
 }

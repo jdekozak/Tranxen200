@@ -6,7 +6,7 @@ namespace Logic
 {
 
 struct PadInterface {
-  virtual void setup() = 0;
+  virtual void setup(int note) = 0;
   virtual bool play(int channel) = 0;
   virtual void configure(int threshold, int relax, bool up, bool down) = 0;
   virtual void light(bool value) = 0;
@@ -30,13 +30,13 @@ struct Pad : public PadInterface
 
   Pad(PAD_DEVICE& device) : _device(device) {}
 
-  virtual void setup()
+  virtual void setup(int note)
   {
     _device.setup();
 
     _threshold = PadDefaultThreshold;
     _relax = PadDefaultRelax;
-    _note = PadNoteOffset;
+    _note = PadNoteOffset + note;
 
     _hit = millis();
     _volume = 0;
@@ -48,7 +48,7 @@ struct Pad : public PadInterface
     bool lightState = false;
     unsigned long now = millis();
     
-    if (now - _hit < _relax)
+    if (now - _hit < _relax && _hit > _relax)
     {
       Serial.println("Relax");
       lightState = true;

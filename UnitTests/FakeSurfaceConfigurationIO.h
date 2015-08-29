@@ -33,5 +33,8 @@ struct FakeSurfaceConfigurationIO
   }
 };
 
+typedef FakeSurfaceConfigurationIO TheSurfaceConfiguration;
+TheSurfaceConfiguration surfaceDevice;
+
 }
 }

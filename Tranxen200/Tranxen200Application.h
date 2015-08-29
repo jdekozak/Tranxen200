@@ -17,7 +17,7 @@ struct TouchPadDevice
   {
     for(int pad = 0; pad < PAD_NUMBER; ++pad) {
       _pad[pad] = _padFactory.create(pad);
-      _pad[pad]->setup();
+      _pad[pad]->setup(pad);
     }
   }
 
@@ -67,7 +67,7 @@ struct Tranxen200Application
 
   void setup()
   {
-    _lastHitPad = 0;
+    _lastHitPad = -1;
     _mode = PLAY;
 
     _midiSetting.setup();
@@ -81,10 +81,13 @@ struct Tranxen200Application
     if (_mode == CONFIG)
     {
       _midiSetting.readValues();
-      _touchDevice.light(_lastHitPad);
-      _touchDevice.configure(_lastHitPad,
-			     _surfaceDevice.readThreshold(), _surfaceDevice.readRelax(),
-			     _midiSetting._up, _midiSetting._down);
+      if(_lastHitPad >= 0)
+      {
+	_touchDevice.light(_lastHitPad);
+	_touchDevice.configure(_lastHitPad,
+			       _surfaceDevice.readThreshold(), _surfaceDevice.readRelax(),
+			       _midiSetting._up, _midiSetting._down);
+      }
     }
     _lastHitPad = _touchDevice.play(_midiSetting._channel);
   }
