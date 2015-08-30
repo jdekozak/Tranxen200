@@ -25,7 +25,7 @@ struct Pad : public PadInterface
 
   int _note;
 
-  int _volume;
+  int _previousValue;
   unsigned long _hit;
 
   Pad(PAD_DEVICE& device) : _device(device) {}
@@ -38,8 +38,8 @@ struct Pad : public PadInterface
     _relax = PadDefaultRelax;
     _note = PadNoteOffset + note;
 
-    _hit = millis();
-    _volume = 0;
+    _hit = 0;
+    _previousValue = 0;
   }
 
   virtual bool play(int channel)
@@ -48,33 +48,29 @@ struct Pad : public PadInterface
     bool lightState = false;
     unsigned long now = millis();
     
-    if (now - _hit < _relax && _hit > _relax)
+    if (isInhibited(now))
     {
-      Serial.println("Relax");
+      Serial.println("Inhibit");
       lightState = true;
+      _previousValue = 0;
     }
     else
     {
-      int measure = _device.readPiezo() - _threshold;
-      if ( measure > _volume)
+      int measure = _device.readPiezo();
+      int difference = measure - _previousValue;
+      if(measure > _threshold)
       {
-        _volume = measure;
-        lightState = true;
+	lightState = true;
       }
-      else if (_volume > 0)
+      if(difference < 0 && _previousValue > _threshold)
       {
-        MidiOut.sendNoteOn(_note, (_volume+_threshold)*128/1024, channel);
-        midiNote = true;
+	MidiOut.sendNoteOn(_note, _previousValue*128/1024, channel);
+	_hit = now;
+	midiNote = true;
+	lightState = true;
+      }
 
-        _hit = now;
-        _volume = 0;
-
-        lightState = true;
-      }
-      else
-      {
-        lightState = false;
-      }
+      _previousValue = measure;
     }
 
     _device.light(lightState);
@@ -96,6 +92,11 @@ struct Pad : public PadInterface
   virtual void light(bool value)
   {
     _device.light(value);
+  }
+
+  bool isInhibited(int now)
+  {
+    return (now - _hit < _relax) && _hit;
   }
 };
 

@@ -7,6 +7,6 @@
 
 int millis() {
   static unsigned long long counter = 0;
-  std::cout << "millis::" << counter << std::endl;
-  return ++counter;
+  std::cout << "millis::" << ++counter << std::endl;
+  return counter;
 }

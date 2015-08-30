@@ -92,7 +92,7 @@ void onePadHit()
   setPiezo(0, 750);
   beatbox.loop();
   checkLed(0, true);
-  setPiezo(0, 700);
+  setPiezo(0, 450);
   beatbox.loop();
   checkMidiNote(1,36,750*128/1024);
   checkLed(0, true);
@@ -171,36 +171,60 @@ void twoPadsConfiguration()
 
   THCRecords::Device::surfaceDevice.mode = THCRecords::Tranxen200Application<1>::PLAY;
 
+  setPiezo(0, 500);
   setPiezo(1, 600);
   beatbox.loop();
+  checkLed(0, false);
   checkLed(1, false);
+  setPiezo(0, 550);
   setPiezo(1, 750);
   beatbox.loop();
+  checkLed(0, false);
   checkLed(1, false);
 
+  setPiezo(0, 601);
   setPiezo(1, 900);
   beatbox.loop();
+  checkLed(0, true);
   checkLed(1, true);
+  setPiezo(0, 650);
   setPiezo(1, 910);
   beatbox.loop();
+  checkLed(0, true);
   checkLed(1, true);
+  setPiezo(0, 625);
   setPiezo(1, 950);
   beatbox.loop();
+  checkLed(0, true);
   checkLed(1, true);
+  checkMidiNote(1,36,650*128/1024);
+  setPiezo(0, 610);
   setPiezo(1, 925);
   beatbox.loop();
+  checkLed(0, true);
   checkLed(1, true);
   checkMidiNote(1,37,950*128/1024);
 
+  setPiezo(0, 500);
   setPiezo(1, 600);
   beatbox.loop();
+  checkLed(0, true);
   checkLed(1, true);
 
+  setPiezo(0, 450);
   setPiezo(1, 450);
   beatbox.loop();
+  checkLed(0, true);
   checkLed(1, false);
 
+  for(int relaxTime = 0; relaxTime < 46; ++relaxTime) {
+    beatbox.loop();
+    checkLed(0, true);
+    checkLed(1, false);
+  }
+
   beatbox.loop();
+  checkLed(0, false);
   checkLed(1, false);
 }
 
