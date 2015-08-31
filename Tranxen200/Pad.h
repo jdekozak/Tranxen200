@@ -47,7 +47,7 @@ struct Pad : public PadInterface
     bool midiNote   = false;
     bool lightState = false;
     unsigned long now = millis();
-    
+
     if (isInhibited(now))
     {
       Serial.println("Inhibit");

@@ -217,7 +217,25 @@ void twoPadsConfiguration()
   checkLed(0, true);
   checkLed(1, false);
 
-  for(int relaxTime = 0; relaxTime < 46; ++relaxTime) {
+  for(int relaxTime = 0; relaxTime < 22; ++relaxTime) {
+    beatbox.loop();
+    checkLed(0, true);
+    checkLed(1, false);
+  }
+  setPiezo(0, 900);
+  beatbox.loop();
+  checkLed(0,true);
+  checkLed(1, false);
+  setPiezo(0, 850);
+  beatbox.loop();
+  checkLed(0,true);
+  checkLed(1, false);
+  setPiezo(0, 450);
+  beatbox.loop();
+  checkLed(0,true);
+  checkLed(1, false);
+
+  for(int relaxTime = 0; relaxTime < 21; ++relaxTime) {
     beatbox.loop();
     checkLed(0, true);
     checkLed(1, false);
